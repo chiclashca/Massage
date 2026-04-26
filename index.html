@@ -3,122 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chic Lash Boutique - Massage Consent Form</title>
+    <title>Massage Consent Form</title>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
     <style>
-        body { font-family: 'Helvetica', Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 10px; display: flex; justify-content: center; }
-        .paper { background: white; width: 100%; max-width: 850px; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; }
-        .logo-container { text-align: center; margin-bottom: 20px; }
-        .logo-img { max-width: 200px; height: auto; }
-        .title { text-align: center; font-size: 20px; font-weight: bold; text-decoration: underline; margin-bottom: 30px; text-transform: uppercase; }
-        
-        .section-title { background: #f9f9f9; padding: 8px; font-weight: bold; margin: 20px 0 15px 0; border-left: 4px solid #000; }
-        .row { margin-bottom: 15px; display: flex; align-items: flex-end; flex-wrap: wrap; }
-        .label { font-size: 14px; font-weight: bold; margin-right: 8px; }
-        input[type="text"] { border: none; border-bottom: 1px solid #000; flex: 1; min-width: 150px; font-size: 16px; outline: none; padding: 2px; background: transparent; }
-        
-        .q-row { margin-top: 15px; font-size: 14px; line-height: 1.6; }
-        label { margin-right: 15px; cursor: pointer; display: inline-flex; align-items: center; }
-        input[type="radio"], input[type="checkbox"] { margin-right: 6px; width: 18px; height: 18px; }
-
-        .focus-areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
-
-        .notice-box { font-size: 12px; line-height: 1.6; margin: 30px 0; padding: 15px; background: #fffaf0; border: 1px solid #ffedcc; color: #665200; }
-
-        .signature-wrapper { border: 2px dashed #ccc; background: #fff; position: relative; width: 100%; max-width: 500px; height: 180px; margin-top: 10px; touch-action: none; }
-        canvas { width: 100%; height: 100%; touch-action: none; }
-        .clear-btn { position: absolute; top: 10px; right: 10px; padding: 5px 12px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; z-index: 10; }
-        .btn-save { position: fixed; bottom: 20px; right: 20px; padding: 15px 30px; background: #000; color: #fff; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; }
-
-        @media print { .btn-save, .clear-btn { display: none !important; } .paper { box-shadow: none; padding: 0; } }
+        body { font-family: sans-serif; background: #f4f4f4; padding: 10px; display: flex; justify-content: center; }
+        .paper { background: white; width: 100%; max-width: 800px; padding: 25px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .logo { text-align: center; margin-bottom: 20px; }
+        .title { text-align: center; font-weight: bold; text-decoration: underline; margin-bottom: 20px; }
+        .row { margin-bottom: 10px; display: flex; align-items: flex-end; }
+        input[type="text"] { border: none; border-bottom: 1px solid #000; flex: 1; outline: none; font-size: 16px; padding: 2px; }
+        .section-title { background: #eee; padding: 5px; font-weight: bold; margin: 15px 0; }
+        .signature-wrapper { border: 2px dashed #ccc; position: relative; width: 100%; height: 200px; touch-action: none; margin-top: 10px; }
+        canvas { width: 100%; height: 100%; cursor: crosshair; }
+        .clear-btn { position: absolute; top: 5px; right: 5px; padding: 5px 10px; z-index: 10; }
+        .btn-print { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; background: #000; color: #fff; border-radius: 50px; border: none; font-weight: bold; }
+        @media print { .btn-print, .clear-btn { display: none; } }
     </style>
 </head>
 <body>
-
 <div class="paper">
-    <div class="logo-container"><img src="logo.png" alt="Chic Lash Boutique" class="logo-img"></div>
+    <div class="logo"><img src="logo.png" style="max-width:180px;"></div>
     <div class="title">MASSAGE THERAPY CONSENT FORM</div>
+    <div class="row">NAME:<input type="text"></div>
+    <div class="row">DATE:<input type="text"></div>
+    
+    <div class="section-title">PREFERENCES & HEALTH</div>
+    <p>Pressure: [ ] Soft [ ] Medium [ ] Deep Tissue</p>
+    <p>Focus Areas: Neck, Shoulders, Back, Legs, Other: ________________</p>
+    <p>Please check if you have: [ ] High Blood Pressure [ ] Pregnancy [ ] Recent Surgery [ ] Allergies</p>
 
-    <div class="row"><div class="label">CLIENT NAME:</div><input type="text"></div>
-    <div class="row"><div class="label">PHONE:</div><input type="text"></div>
-    <div class="row"><div class="label">DATE:</div><input type="text" placeholder="MM/DD/YYYY"></div>
-
-    <div class="section-title">1. MASSAGE PREFERENCES</div>
-    <div class="q-row">
-        <b>Desired Pressure:</b><br>
-        <label><input type="radio" name="pressure"> Light</label>
-        <label><input type="radio" name="pressure"> Medium</label>
-        <label><input type="radio" name="pressure"> Firm/Deep Tissue</label>
-    </div>
-    <div class="q-row">
-        <b>Areas to Focus On:</b> (Check all that apply)<br>
-        <div class="focus-areas">
-            <label><input type="checkbox"> Neck</label>
-            <label><input type="checkbox"> Shoulders</label>
-            <label><input type="checkbox"> Upper Back</label>
-            <label><input type="checkbox"> Lower Back</label>
-            <label><input type="checkbox"> Hips/Glutes</label>
-            <label><input type="checkbox"> Arms/Hands</label>
-            <label><input type="checkbox"> Legs/Feet</label>
-            <label><input type="checkbox"> Scalp/Face</label>
-        </div>
-    </div>
-
-    <div class="section-title">2. HEALTH HISTORY & CONTRAINDICATIONS</div>
-    <div class="q-row">Do you have any of the following? (Check if Yes)</div>
-    <div class="focus-areas">
-        <label><input type="checkbox"> High Blood Pressure</label>
-        <label><input type="checkbox"> Varicose Veins</label>
-        <label><input type="checkbox"> Blood Clots/DVT</label>
-        <label><input type="checkbox"> Osteoporosis</label>
-        <label><input type="checkbox"> Recent Surgery</label>
-        <label><input type="checkbox"> Pregnancy</label>
-        <label><input type="checkbox"> Skin Rashes</label>
-        <label><input type="checkbox"> Numbness/Tingling</label>
-    </div>
-    <div class="row" style="margin-top:15px;"><div class="label">Other Health Concerns / Allergies:</div><input type="text"></div>
-
-    <div class="section-title">3. MASSAGE POLICIES & CONSENT</div>
-    <div class="notice-box">
-        • I understand that massage therapy is for the purpose of stress reduction, relief from muscular tension, or increasing circulation.<br>
-        • I understand that the massage therapist does not diagnose illness or disease, and does not prescribe medical treatment.<br>
-        • I have informed the therapist of all my known physical conditions and medical history.<br>
-        • I understand that there is no breast or genital contact during any massage session.
-    </div>
-
-    <div class="signature-section">
-        <div class="label">Client Signature:</div>
-        <div class="signature-wrapper">
-            <button class="clear-btn" type="button" id="clearBtn">Clear</button>
-            <canvas id="signature-pad"></canvas>
-        </div>
-        <div class="row" style="margin-top:20px;"><div class="label">Date:</div><input type="text"></div>
+    <div class="section-title">SIGNATURE</div>
+    <div class="signature-wrapper">
+        <button class="clear-btn" id="clear">Clear</button>
+        <canvas id="canvas"></canvas>
     </div>
 </div>
-
-<button class="btn-save" onclick="window.print()">SAVE AS PDF</button>
+<button class="btn-print" onclick="window.print()">SAVE / PRINT</button>
 
 <script>
-    const canvas = document.getElementById('signature-pad');
-    const clearButton = document.getElementById('clearBtn');
-    let signaturePad;
-
-    function resizeCanvas() {
-        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const canvas = document.getElementById('canvas');
+    const signaturePad = new SignaturePad(canvas);
+    function resize() {
+        const ratio = window.devicePixelRatio || 1;
         canvas.width = canvas.offsetWidth * ratio;
         canvas.height = canvas.offsetHeight * ratio;
         canvas.getContext("2d").scale(ratio, ratio);
-        if (signaturePad) signaturePad.clear();
+        signaturePad.clear();
     }
-
-    window.onload = function() {
-        signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgba(255, 255, 255, 0)', penColor: 'rgb(0, 0, 0)' });
-        resizeCanvas();
-    };
-
-    window.addEventListener("resize", resizeCanvas);
-    clearButton.addEventListener('click', () => signaturePad.clear());
+    window.onload = resize;
+    window.onresize = resize;
+    document.getElementById('clear').onclick = () => signaturePad.clear();
 </script>
-
 </body>
 </html>
